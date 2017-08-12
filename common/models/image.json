@@ -5,23 +5,14 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Media": true
+  },
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "storage": {
-      "type": "string"
-    },
-    "format": {
-      "type": "string"
-    },
     "aspectRatio": {
       "type": "number",
+      "required": true,
       "default": 1.33
-    },
-    "url": {
-      "type": "string"
     }
   },
   "validations": [],

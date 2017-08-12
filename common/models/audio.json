@@ -5,22 +5,12 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Media": true
+  },
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "storage": {
-      "type": "string"
-    },
-    "format": {
-      "type": "string"
-    },
     "duration": {
       "type": "number"
-    },
-    "url": {
-      "type": "string"
     }
   },
   "validations": [],

@@ -11,15 +11,14 @@
   "properties": {
     "uuid": {
       "type": "string",
-      "required": true,
       "defaultFn": "uuidv4"
     },
     "caption": {
-      "type": "string"
+      "type": "string",
+      "default": null
     },
     "privacy": {
       "type": "string",
-      "required": true,
       "default": "friend"
     },
     "url": {

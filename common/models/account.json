@@ -1,0 +1,56 @@
+{
+  "name": "Account",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "defaultFn": "uuidv4"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "birth": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string",
+      "default": null
+    },
+    "url": {
+      "type": "string"
+    },
+    "postCreateCount": {
+      "type": "number",
+      "default": 0
+    },
+    "postCollaborateCount": {
+      "type": "number",
+      "default": 0
+    },
+    "postLikeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "postCommentCount": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

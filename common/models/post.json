@@ -1,0 +1,53 @@
+{
+  "name": "Post",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "required": true,
+      "defaultFn": "uuidv4"
+    },
+    "caption": {
+      "type": "string"
+    },
+    "privacy": {
+      "type": "string",
+      "required": true,
+      "default": "friend"
+    },
+    "url": {
+      "type": "string"
+    },
+    "bubbleCount": {
+      "type": "number",
+      "default": 0
+    },
+    "collaboratorCount": {
+      "type": "number",
+      "default": 0
+    },
+    "likeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "commentCount": {
+      "type": "number",
+      "default": 0
+    },
+    "shareCount": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Audio",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "storage": {
+      "type": "string"
+    },
+    "format": {
+      "type": "string"
+    },
+    "duration": {
+      "type": "number"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

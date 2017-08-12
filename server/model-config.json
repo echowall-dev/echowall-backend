@@ -10,7 +10,8 @@
       "loopback/common/mixins",
       "loopback/server/mixins",
       "../common/mixins",
-      "./mixins"
+      "./mixins",
+      "../node_modules/loopback-ds-timestamp-mixin"
     ]
   },
   "User": {
@@ -34,5 +35,37 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "Account": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Audio": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Bubble": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Post": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Location": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Comment": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Tag": {
+    "dataSource": "mongoDs",
+    "public": true
   }
 }

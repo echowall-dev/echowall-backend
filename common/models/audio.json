@@ -10,7 +10,8 @@
   },
   "properties": {
     "duration": {
-      "type": "number"
+      "type": "number",
+      "required": true
     }
   },
   "validations": [],

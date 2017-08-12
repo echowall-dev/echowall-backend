@@ -22,7 +22,8 @@
       "default": "friend"
     },
     "url": {
-      "type": "string"
+      "type": "string",
+      "default": null
     },
     "bubbleCount": {
       "type": "number",

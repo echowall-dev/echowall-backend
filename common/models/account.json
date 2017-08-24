@@ -14,39 +14,28 @@
       "defaultFn": "uuidv4"
     },
     "firstName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "lastName": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "gender": {
-      "type": "string"
+      "type": "string",
+      "default": null
     },
     "birth": {
-      "type": "date"
+      "type": "date",
+      "default": null
     },
     "description": {
       "type": "string",
       "default": null
     },
     "url": {
-      "type": "string"
-    },
-    "postCreateCount": {
-      "type": "number",
-      "default": 0
-    },
-    "postCollaborateCount": {
-      "type": "number",
-      "default": 0
-    },
-    "postLikeCount": {
-      "type": "number",
-      "default": 0
-    },
-    "postCommentCount": {
-      "type": "number",
-      "default": 0
+      "type": "string",
+      "default": null
     }
   },
   "validations": [],

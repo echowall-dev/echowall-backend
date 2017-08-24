@@ -22,27 +22,8 @@
       "default": "friend"
     },
     "url": {
-      "type": "string"
-    },
-    "bubbleCount": {
-      "type": "number",
-      "default": 0
-    },
-    "collaboratorCount": {
-      "type": "number",
-      "default": 0
-    },
-    "likeCount": {
-      "type": "number",
-      "default": 0
-    },
-    "commentCount": {
-      "type": "number",
-      "default": 0
-    },
-    "shareCount": {
-      "type": "number",
-      "default": 0
+      "type": "string",
+      "default": null
     }
   },
   "validations": [],

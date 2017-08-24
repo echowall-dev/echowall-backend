@@ -11,7 +11,8 @@
       "required": true
     },
     "geopoint": {
-      "type": "geopoint"
+      "type": "geopoint",
+      "default": null
     }
   },
   "validations": [],

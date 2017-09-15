@@ -15,7 +15,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -41,16 +42,16 @@
     "public": true
   },
   "Image": {
-    "dataSource": "mongoDs",
-    "public": true
+    "dataSource": "transient",
+    "public": false
   },
   "Audio": {
-    "dataSource": "mongoDs",
-    "public": true
+    "dataSource": "transient",
+    "public": false
   },
   "Bubble": {
-    "dataSource": "mongoDs",
-    "public": true
+    "dataSource": "transient",
+    "public": false
   },
   "Post": {
     "dataSource": "mongoDs",
@@ -58,14 +59,26 @@
   },
   "Location": {
     "dataSource": "mongoDs",
-    "public": true
+    "public": false
   },
   "Comment": {
     "dataSource": "mongoDs",
-    "public": true
+    "public": false
   },
   "Tag": {
     "dataSource": "mongoDs",
+    "public": false
+  },
+  "Collaboration": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Relationship": {
+    "dataSource": "mysqlDs",
+    "public": true
+  },
+  "Like": {
+    "dataSource": "mysqlDs",
     "public": true
   }
 }

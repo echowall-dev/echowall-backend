@@ -20,14 +20,39 @@
     "privacy": {
       "type": "string",
       "default": "friend"
-    },
-    "url": {
-      "type": "string",
-      "default": null
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "creator": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "creatorId"
+    },
+    "collaborators": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "postId",
+      "through": "Collaboration",
+      "keyThrough": "collaboratorId"
+    },
+    "likers": {
+      "type": "hasMany",
+      "model": "Account",
+      "through": "Like",
+      "polymorphic": "likeable"
+    },
+    "image": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "image"
+    },
+    "bubbles": {
+      "type": "embedsMany",
+      "model": "Bubble",
+      "property": "bubbles"
+    }
+  },
   "acls": [],
   "methods": {}
 }

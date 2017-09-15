@@ -2,9 +2,9 @@
 
 module.exports = function(Comment) {
   // To ensure the comment is not empty when the type is "text"
-  Comment.observe('before save', (ctx, next) => {
-    if (ctx.instance) {
-      if (ctx.instance.type === 'text' && (ctx.instance.message === null || ctx.instance.message === '')) {
+  Comment.observe('before save', (context, next) => {
+    if (context.instance) {
+      if (context.instance.type === 'text' && (context.instance.message === null || context.instance.message === '')) {
         let err = new Error('The comment is empty');
         err.statusCode = 422;
         next(err);
@@ -12,7 +12,7 @@ module.exports = function(Comment) {
         next();
       }
     } else {
-      if (ctx.data.type === 'text' && (ctx.data.message === null || ctx.data.message === '')) {
+      if (context.data.type === 'text' && (context.data.message === null || context.data.message === '')) {
         let err = new Error('The comment is empty');
         err.statusCode = 422;
         next(err);

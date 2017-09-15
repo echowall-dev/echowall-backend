@@ -32,14 +32,54 @@
     "description": {
       "type": "string",
       "default": null
-    },
-    "url": {
-      "type": "string",
-      "default": null
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "avatar": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "avatar"
+    },
+    "postCreate": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "creatorId"
+    },
+    "postCollaborate": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "collaboratorId",
+      "through": "Collaboration",
+      "keyThrough": "postId"
+    },
+    "postLike": {
+      "type": "hasMany",
+      "model": "Post",
+      "through": "Like",
+      "invert": true,
+      "polymorphic": "likeable"
+    },
+    "objectUsers": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "subjectUserId",
+      "through": "Relationship",
+      "keyThrough": "objectUserId"
+    },
+    "subjectUsers": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "objectUserId",
+      "through": "Relationship",
+      "keyThrough": "subjectUserId"
+    },
+    "bubbles": {
+      "type": "hasMany",
+      "model": "Bubble",
+      "foreignKey": "creatorId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

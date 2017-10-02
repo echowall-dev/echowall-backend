@@ -33,7 +33,7 @@
   "validations": [],
   "relations": {
     "audio": {
-      "type": "hasOne",
+      "type": "embedsOne",
       "model": "Audio",
       "property": "audio"
     },

@@ -53,6 +53,11 @@
       "through": "Collaboration",
       "keyThrough": "postId"
     },
+    "bubbles": {
+      "type": "hasMany",
+      "model": "Bubble",
+      "foreignKey": "creatorId"
+    },
     "postLike": {
       "type": "hasMany",
       "model": "Post",
@@ -73,11 +78,6 @@
       "foreignKey": "objectUserId",
       "through": "Relationship",
       "keyThrough": "subjectUserId"
-    },
-    "bubbles": {
-      "type": "hasMany",
-      "model": "Bubble",
-      "foreignKey": "creatorId"
     }
   },
   "acls": [],

@@ -11,6 +11,9 @@
   "properties": {
     "uuid": {
       "type": "string",
+      "index": {
+        "unique": true
+      },
       "defaultFn": "uuidv4"
     },
     "caption": {
@@ -20,6 +23,10 @@
     "privacy": {
       "type": "string",
       "default": "friend"
+    },
+    "status": {
+      "type": "string",
+      "default": "active"
     }
   },
   "validations": [],

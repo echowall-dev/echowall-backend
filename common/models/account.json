@@ -11,9 +11,6 @@
   "properties": {
     "uuid": {
       "type": "string",
-      "index": {
-        "unique": true
-      },
       "defaultFn": "uuidv4"
     },
     "firstName": {

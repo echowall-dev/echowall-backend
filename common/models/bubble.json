@@ -31,7 +31,18 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "audio": {
+      "type": "embedsOne",
+      "model": "Audio",
+      "property": "audio"
+    },
+    "creator": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "creatorId"
+    }
+  },
   "acls": [],
   "methods": {}
 }

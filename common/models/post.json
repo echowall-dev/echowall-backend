@@ -21,13 +21,43 @@
       "type": "string",
       "default": "friend"
     },
-    "url": {
+    "status": {
       "type": "string",
-      "default": null
+      "default": "active"
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "creator": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "creatorId"
+    },
+    "collaborators": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "postId",
+      "through": "Collaboration",
+      "keyThrough": "collaboratorId"
+    },
+    "likers": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "postId",
+      "through": "LikePost",
+      "keyThrough": "likerId"
+    },
+    "image": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "image"
+    },
+    "bubbles": {
+      "type": "embedsMany",
+      "model": "Bubble",
+      "property": "bubbles"
+    }
+  },
   "acls": [],
   "methods": {}
 }

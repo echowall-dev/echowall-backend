@@ -32,14 +32,86 @@
     "description": {
       "type": "string",
       "default": null
-    },
-    "url": {
-      "type": "string",
-      "default": null
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "avatar": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "avatar"
+    },
+    "postCreate": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "creatorId"
+    },
+    "postCollaborate": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "collaboratorId",
+      "through": "Collaboration",
+      "keyThrough": "postId"
+    },
+    "postLike": {
+      "type": "hasMany",
+      "model": "Post",
+      "foreignKey": "likerId",
+      "through": "LikePost",
+      "keyThrough": "postId"
+    },
+    "bubbles": {
+      "type": "hasMany",
+      "model": "Bubble",
+      "foreignKey": "creatorId"
+    },
+    "objectUsers": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "subjectUserId",
+      "through": "Relationship",
+      "keyThrough": "objectUserId"
+    },
+    "subjectUsers": {
+      "type": "hasMany",
+      "model": "Account",
+      "foreignKey": "objectUserId",
+      "through": "Relationship",
+      "keyThrough": "subjectUserId"
+    }
+  },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "prototype.postFetch": {
+      "accepts": [
+        {
+          "arg": "amount",
+          "type": "number",
+          "required": false,
+          "description": "The amount of posts to fetch"
+        },
+        {
+          "arg": "lastFetchTime",
+          "type": "date",
+          "required": false,
+          "description": "The timestamp of last fetch"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "posts",
+          "type": "array",
+          "root": false,
+          "description": "A list of available posts"
+        }
+      ],
+      "description": "Fetch available posts",
+      "http": [
+        {
+          "path": "/postFetch",
+          "verb": "get"
+        }
+      ]
+    }
+  }
 }

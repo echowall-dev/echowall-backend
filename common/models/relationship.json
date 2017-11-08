@@ -1,0 +1,32 @@
+{
+  "name": "Relationship",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "status": {
+      "type": "string",
+      "default": "follow"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "subjectUser": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "subjectUserId"
+    },
+    "objectUser": {
+      "type": "belongsTo",
+      "model": "Account",
+      "foreignKey": "objectUserId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

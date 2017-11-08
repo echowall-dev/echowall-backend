@@ -82,19 +82,19 @@
   },
   "acls": [],
   "methods": {
-    "prototype.postFollow": {
+    "prototype.postFetch": {
       "accepts": [
         {
           "arg": "amount",
           "type": "number",
           "required": false,
-          "description": "The amount of posts to get"
+          "description": "The amount of posts to fetch"
         },
         {
           "arg": "lastFetchTime",
           "type": "date",
           "required": false,
-          "description": "The time of last fetch"
+          "description": "The timestamp of last fetch"
         }
       ],
       "returns": [
@@ -102,13 +102,13 @@
           "arg": "posts",
           "type": "array",
           "root": false,
-          "description": "The posts of followee users"
+          "description": "A list of available posts"
         }
       ],
-      "description": "Get posts of followee users",
+      "description": "Fetch available posts",
       "http": [
         {
-          "path": "/postFollow",
+          "path": "/postFetch",
           "verb": "get"
         }
       ]

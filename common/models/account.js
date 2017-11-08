@@ -46,43 +46,55 @@ module.exports = function(Account) {
   });
 
   /**
-   * Get posts of following users
+   * Fetch available posts
    * @param {number} amount The amount of posts to get
    * @param {date} lastFetchTime The time of last fetch
    * @param {Function(Error, array)} callback
    */
-  Account.prototype.postFollow = function(amount, lastFetchTime, callback) {
+  Account.prototype.postFetch = function(amount, lastFetchTime, callback) {
     amount = (amount) ? amount : 10;
     lastFetchTime = (lastFetchTime) ? lastFetchTime : new Date().toISOString();
 
     const sqlQuery = `
-    SELECT objectUserId FROM Relationship
-    WHERE subjectUserId = "${this.id}";
+    SELECT postId from ((
+    	SELECT P.postId, P.createdAt
+    	FROM PostDouble AS P LEFT JOIN Collaboration AS C
+    	ON C.postId = P.postId AND C.collaboratorId = "${this.id}"
+    	WHERE (P.creatorId = "${this.id}" OR C.collaboratorId = "${this.id}")
+    	AND P.createdAt < "${lastFetchTime}"
+    	AND P.status = "active"
+    	LIMIT ${amount}
+    ) UNION (
+    	SELECT P.postId, P.createdAt
+    	FROM PostDouble AS P INNER JOIN Relationship AS R
+    	ON R.objectUserId = P.creatorId AND R.subjectUserId = "${this.id}"
+    	AND (P.privacy = "friend" AND R.status = "friend"
+    	OR P.privacy = "public" AND R.status != "block")
+    	AND P.createdAt < "${lastFetchTime}"
+    	AND P.status = "active"
+    	LIMIT ${amount}
+    )) AS PD
+    ORDER BY createdAt DESC
+    LIMIT ${amount};
     `;
 
-    let mariaDs = app.dataSources.mariaDs;
-    mariaDs.connector.execute(sqlQuery, null, (err, objectUserList) => {
+    const mariaDs = app.dataSources.mariaDs;
+    mariaDs.connector.execute(sqlQuery, null, (err, postDoubleList) => {
       if (err) console.error(err);
 
-      let objectUserIdList = objectUserList.map(
-        objectUser => objectUser.objectUserId
+      let postIdList = postDoubleList.map(
+        postDouble => postDouble.postId
       );
 
       let Post = app.models.Post;
       Post.find({
         where: {
-          and: [{
-            createdAt: {lt: lastFetchTime}
-          }, {
-            privacy: 'public'
-          }, {
-            creatorId: {inq: objectUserIdList}
-          }]
+          id: {inq: postIdList}
         },
         order: 'createdAt DESC',
-        limit: amount,
         include: ['creator', 'collaborators']
       }, (err, postList) => {
+        if (err) console.error(err);
         callback(null, postList);
       });
     });

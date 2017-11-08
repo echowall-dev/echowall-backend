@@ -1,5 +1,5 @@
 {
-  "name": "Like",
+  "name": "LikePost",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,14 +11,15 @@
   "properties": {},
   "validations": [],
   "relations": {
-    "account": {
+    "liker": {
       "type": "belongsTo",
       "model": "Account",
-      "foreignKey": ""
+      "foreignKey": "likerId"
     },
-    "likeable": {
+    "post": {
       "type": "belongsTo",
-      "polymorphic": true
+      "model": "Post",
+      "foreignKey": "postId"
     }
   },
   "acls": [],

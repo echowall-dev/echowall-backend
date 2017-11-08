@@ -37,10 +37,6 @@
     "dataSource": "db",
     "public": false
   },
-  "Account": {
-    "dataSource": "mongoDs",
-    "public": true
-  },
   "Image": {
     "dataSource": "transient",
     "public": false
@@ -52,6 +48,10 @@
   "Bubble": {
     "dataSource": "transient",
     "public": false
+  },
+  "Account": {
+    "dataSource": "mongoDs",
+    "public": true
   },
   "Post": {
     "dataSource": "mongoDs",
@@ -70,15 +70,23 @@
     "public": false
   },
   "Collaboration": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mariaDs",
     "public": true
   },
   "Relationship": {
-    "dataSource": "mysqlDs",
+    "dataSource": "mariaDs",
     "public": true
   },
-  "Like": {
-    "dataSource": "mysqlDs",
+  "LikePost": {
+    "dataSource": "mariaDs",
     "public": true
+  },
+  "PostDouble": {
+    "dataSource": "mariaDs",
+    "public": false
+  },
+  "AccountDouble": {
+    "dataSource": "mariaDs",
+    "public": false
   }
 }

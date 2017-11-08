@@ -1,0 +1,24 @@
+{
+  "name": "AccountDouble",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "TimeStamp": true
+  },
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

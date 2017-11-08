@@ -14,7 +14,7 @@ module.exports = function(Relationship) {
         err.statusCode = 422;
         // console.error(err);
         // throw err;
-        next(err);
+        return next(err);
       }
     }
     next();

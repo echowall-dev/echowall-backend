@@ -43,8 +43,9 @@
     "likers": {
       "type": "hasMany",
       "model": "Account",
-      "through": "Like",
-      "polymorphic": "likeable"
+      "foreignKey": "postId",
+      "through": "LikePost",
+      "keyThrough": "likerId"
     },
     "image": {
       "type": "embedsOne",

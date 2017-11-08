@@ -1,11 +1,30 @@
 'use strict';
 
-let app = require('../../server/server');
+const app = require('../../server/server');
 // let appPros = require('../app-properties');
 // let accountDomain = appPros.hostDomain + '/account';
 
 module.exports = function(Account) {
   Account.validatesUniquenessOf('username');
+
+  // Create or update AccountDouble instance after an account is created
+  Account.observe('after save', (context, next) => {
+    const AccountDouble = app.models.AccountDouble;
+
+    AccountDouble.upsertWithWhere({
+      accountId: context.instance.id
+    }, {
+      accountId: context.instance.id,
+      createdAt: context.instance.createdAt,
+      updatedAt: context.instance.updatedAt
+    }, (err, model) => {
+      if (err) {
+        return next(err);
+      }
+      // console.log(model);
+      next();
+    });
+  });
 
   // Users cannot follow themselves
   // Need to do this checking in remote hooks instead of operation hooks,
@@ -20,7 +39,7 @@ module.exports = function(Account) {
         err.statusCode = 422;
         // console.error(err);
         // throw err;
-        next(err);
+        return next(err);
       }
     }
     next();
@@ -41,8 +60,8 @@ module.exports = function(Account) {
     WHERE subjectUserId = "${this.id}";
     `;
 
-    let mysqlDs = app.dataSources.mysqlDs;
-    mysqlDs.connector.execute(sqlQuery, null, (err, objectUserList) => {
+    let mariaDs = app.dataSources.mariaDs;
+    mariaDs.connector.execute(sqlQuery, null, (err, objectUserList) => {
       if (err) console.error(err);
 
       let objectUserIdList = objectUserList.map(

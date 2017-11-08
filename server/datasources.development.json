@@ -3,7 +3,7 @@
     "name": "db",
     "connector": "memory"
   },
-  "mysqlDs": {
+  "mariaDs": {
     "host": "localhost",
     "port": 3306,
     "url": "",

@@ -7,9 +7,7 @@ const app = require('../../server/server');
 module.exports = function(Post) {
   // Create or update PostDouble instance after a post is created
   Post.observe('after save', (context, next) => {
-    const PostDouble = app.models.PostDouble;
-
-    PostDouble.upsertWithWhere({
+    app.models.PostDouble.upsertWithWhere({
       postId: context.instance.id
     }, {
       postId: context.instance.id,

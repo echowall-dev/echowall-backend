@@ -25,7 +25,7 @@
       "type": "string",
       "default": null
     },
-    "birth": {
+    "dateOfBirth": {
       "type": "date",
       "default": null
     },
@@ -63,6 +63,11 @@
     "bubbles": {
       "type": "hasMany",
       "model": "Bubble",
+      "foreignKey": "creatorId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
       "foreignKey": "creatorId"
     },
     "objectUsers": {

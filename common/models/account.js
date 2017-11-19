@@ -9,9 +9,7 @@ module.exports = function(Account) {
 
   // Create or update AccountDouble instance after an account is created
   Account.observe('after save', (context, next) => {
-    const AccountDouble = app.models.AccountDouble;
-
-    AccountDouble.upsertWithWhere({
+    app.models.AccountDouble.upsertWithWhere({
       accountId: context.instance.id
     }, {
       accountId: context.instance.id,
@@ -86,8 +84,7 @@ module.exports = function(Account) {
         postDouble => postDouble.postId
       );
 
-      let Post = app.models.Post;
-      Post.find({
+      app.models.Post.find({
         where: {
           id: {inq: postIdList}
         },

@@ -56,6 +56,11 @@
       "type": "embedsMany",
       "model": "Bubble",
       "property": "bubbles"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
     }
   },
   "acls": [],

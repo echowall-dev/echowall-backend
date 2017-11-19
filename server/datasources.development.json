@@ -26,5 +26,12 @@
   "transient": {
     "name": "transient",
     "connector": "transient"
+  },
+  "amazonS3": {
+    "name": "amazonS3",
+    "connector": "loopback-component-storage",
+    "provider": "amazon",
+    "key": "amazon key",
+    "keyId": "amazon key id"
   }
 }

@@ -57,11 +57,11 @@
     "dataSource": "mongoDs",
     "public": true
   },
-  "Location": {
-    "dataSource": "mongoDs",
-    "public": false
-  },
   "Comment": {
+    "dataSource": "mongoDs",
+    "public": true
+  },
+  "Location": {
     "dataSource": "mongoDs",
     "public": false
   },

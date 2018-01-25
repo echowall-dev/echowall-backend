@@ -2,7 +2,7 @@
 
 const app = require('../server');
 
-module.exports = function(app, callback) {
+module.exports = function(app, cb) {
   /*
    * The `app` object provides access to a variety of LoopBack resources such as
    * models (e.g. `app.models.YourModelName`) or data sources (e.g.
@@ -14,6 +14,16 @@ module.exports = function(app, callback) {
 
   mariaDs.autoupdate('AccountDouble', (err) => {
     if (err) throw err;
+
+    const sqlQuery = `
+    ALTER TABLE AccountDouble
+    MODIFY COLUMN role VARCHAR(255),
+    MODIFY COLUMN status VARCHAR(255);
+    `;
+
+    mariaDs.connector.execute(sqlQuery, null, (err) => {
+      if (err) console.error(err);
+    });
   });
 
   mariaDs.autoupdate('PostDouble', (err) => {
@@ -78,5 +88,5 @@ module.exports = function(app, callback) {
     });
   });
 
-  process.nextTick(callback); // Remove if you pass `callback` to an async function yourself
+  process.nextTick(cb); // Remove if you pass `cb` to an async function yourself
 };

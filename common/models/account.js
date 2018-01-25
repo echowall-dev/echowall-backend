@@ -8,15 +8,15 @@ module.exports = function(Account) {
   Account.validatesUniquenessOf('username');
 
   // Create or update AccountDouble instance after an account is created
-  Account.observe('after save', (context, next) => {
-    const AccountDouble = app.models.AccountDouble;
-
-    AccountDouble.upsertWithWhere({
-      accountId: context.instance.id
+  Account.observe('after save', (ctx, next) => {
+    app.models.AccountDouble.upsertWithWhere({
+      accountId: ctx.instance.id
     }, {
-      accountId: context.instance.id,
-      createdAt: context.instance.createdAt,
-      updatedAt: context.instance.updatedAt
+      accountId: ctx.instance.id,
+      role: ctx.instance.role,
+      status: ctx.instance.status,
+      createdAt: ctx.instance.createdAt,
+      updatedAt: ctx.instance.updatedAt
     }, (err, model) => {
       if (err) {
         return next(err);
@@ -29,12 +29,12 @@ module.exports = function(Account) {
   // Users cannot follow themselves
   // Need to do this checking in remote hooks instead of operation hooks,
   // otherwise there will be error "Callback was already called"
-  Account.beforeRemote('**', (context, unused, next) => {
-    // console.log(context.req.params);
-    // console.log(context.req.body);
+  Account.beforeRemote('**', (ctx, unused, next) => {
+    // console.log(ctx.req.params);
+    // console.log(ctx.req.body);
 
-    if (context.req.params) {
-      if (context.req.params.id === context.req.params.fk) {
+    if (ctx.req.params) {
+      if (ctx.req.params.id === ctx.req.params.fk) {
         let err = new Error('Users cannot follow themselves');
         err.statusCode = 422;
         // console.error(err);
@@ -51,7 +51,7 @@ module.exports = function(Account) {
    * @param {date} lastFetchTime The time of last fetch
    * @param {Function(Error, array)} callback
    */
-  Account.prototype.postFetch = function(amount, lastFetchTime, callback) {
+  Account.prototype.postFetch = function(amount, lastFetchTime, cb) {
     amount = (amount) ? amount : 10;
     lastFetchTime = (lastFetchTime) ? lastFetchTime : new Date().toISOString();
 
@@ -86,8 +86,7 @@ module.exports = function(Account) {
         postDouble => postDouble.postId
       );
 
-      let Post = app.models.Post;
-      Post.find({
+      app.models.Post.find({
         where: {
           id: {inq: postIdList}
         },
@@ -95,7 +94,7 @@ module.exports = function(Account) {
         include: ['creator', 'collaborators']
       }, (err, postList) => {
         if (err) console.error(err);
-        callback(null, postList);
+        cb(null, postList);
       });
     });
   };

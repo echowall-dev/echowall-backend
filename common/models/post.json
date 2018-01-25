@@ -24,6 +24,22 @@
     "status": {
       "type": "string",
       "default": "active"
+    },
+    "collaboratorCount": {
+      "type": "number",
+      "default": 0
+    },
+    "likeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "bubbleCount": {
+      "type": "number",
+      "default": 0
+    },
+    "commentCount": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
@@ -56,6 +72,11 @@
       "type": "embedsMany",
       "model": "Bubble",
       "property": "bubbles"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": ""
     }
   },
   "acls": [],

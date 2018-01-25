@@ -25,13 +25,61 @@
       "type": "string",
       "default": null
     },
-    "birth": {
+    "dateOfBirth": {
       "type": "date",
       "default": null
     },
     "description": {
       "type": "string",
       "default": null
+    },
+    "role": {
+      "type": "string",
+      "default": "user"
+    },
+    "status": {
+      "type": "string",
+      "default": "valid"
+    },
+    "lastLogin": {
+      "type": "date",
+      "default": null
+    },
+    "language": {
+      "type": "string",
+      "default": "en"
+    },
+    "postCreateCount": {
+      "type": "number",
+      "default": 0
+    },
+    "postCollaborateCount": {
+      "type": "number",
+      "default": 0
+    },
+    "postLikeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "bubbleCount": {
+      "type": "number",
+      "default": 0
+    },
+    "commentCount": {
+      "type": "number",
+      "default": 0
+    },
+    "followerCount": {
+      "type": "number",
+      "default": 0
+    },
+    "followeeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "friendCount": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
@@ -63,6 +111,11 @@
     "bubbles": {
       "type": "hasMany",
       "model": "Bubble",
+      "foreignKey": "creatorId"
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
       "foreignKey": "creatorId"
     },
     "objectUsers": {

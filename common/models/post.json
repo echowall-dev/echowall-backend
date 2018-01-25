@@ -24,6 +24,22 @@
     "status": {
       "type": "string",
       "default": "active"
+    },
+    "collaboratorCount": {
+      "type": "number",
+      "default": 0
+    },
+    "likeCount": {
+      "type": "number",
+      "default": 0
+    },
+    "bubbleCount": {
+      "type": "number",
+      "default": 0
+    },
+    "commentCount": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],

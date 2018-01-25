@@ -14,6 +14,16 @@ module.exports = function(app, cb) {
 
   mariaDs.autoupdate('AccountDouble', (err) => {
     if (err) throw err;
+
+    const sqlQuery = `
+    ALTER TABLE AccountDouble
+    MODIFY COLUMN role VARCHAR(255),
+    MODIFY COLUMN status VARCHAR(255);
+    `;
+
+    mariaDs.connector.execute(sqlQuery, null, (err) => {
+      if (err) console.error(err);
+    });
   });
 
   mariaDs.autoupdate('PostDouble', (err) => {

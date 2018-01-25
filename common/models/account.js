@@ -13,6 +13,8 @@ module.exports = function(Account) {
       accountId: ctx.instance.id
     }, {
       accountId: ctx.instance.id,
+      role: ctx.instance.role,
+      status: ctx.instance.status,
       createdAt: ctx.instance.createdAt,
       updatedAt: ctx.instance.updatedAt
     }, (err, model) => {

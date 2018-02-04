@@ -45,7 +45,7 @@
       "type": "date",
       "default": null
     },
-    "language": {
+    "locale": {
       "type": "string",
       "default": "en"
     },

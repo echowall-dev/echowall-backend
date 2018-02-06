@@ -13,23 +13,31 @@
       "type": "string",
       "defaultFn": "uuidv4"
     },
-    "firstName": {
+    "givenName": {
       "type": "string",
       "required": true
     },
-    "lastName": {
+    "familyName": {
       "type": "string",
       "required": true
+    },
+    "middleName": {
+      "type": "string",
+      "default": null
     },
     "gender": {
       "type": "string",
       "default": null
     },
-    "dateOfBirth": {
+    "birthdate": {
       "type": "date",
       "default": null
     },
     "description": {
+      "type": "string",
+      "default": null
+    },
+    "phoneNumber": {
       "type": "string",
       "default": null
     },

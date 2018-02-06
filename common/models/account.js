@@ -49,7 +49,7 @@ module.exports = function(Account) {
    * Fetch available posts
    * @param {number} amount The amount of posts to get
    * @param {date} lastFetchTime The time of last fetch
-   * @param {Function(Error, array)} callback
+   * @param {Function(Error, array)} cb
    */
   Account.prototype.postFetch = function(amount, lastFetchTime, cb) {
     amount = (amount) ? amount : 10;

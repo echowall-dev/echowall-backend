@@ -1,5 +1,7 @@
 'use strict';
 
+const app = require('../../server/server');
+
 module.exports = function(Comment) {
   // To ensure the comment is not empty when the type is "text"
   Comment.observe('before save', (ctx, next) => {
@@ -19,6 +21,14 @@ module.exports = function(Comment) {
       } else {
         next();
       }
+    }
+  });
+
+  Comment.observe('after save', (ctx, next) => {
+    if (ctx.isNewInstance) {
+      const { Account, Post } = app.models;
+      Account.upsertWithWhere();
+      Post.upsertWithWhere();
     }
   });
 };

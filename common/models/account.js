@@ -1,15 +1,16 @@
 'use strict';
 
 const app = require('../../server/server');
-// let appPros = require('../app-properties');
-// let accountDomain = appPros.hostDomain + '/account';
 
 module.exports = function(Account) {
   Account.validatesUniquenessOf('username');
 
+  const { AccountDouble, Post } = app.models;
+  const { mariaDs } = app.dataSources;
+
   // Create or update AccountDouble instance after an account is created
   Account.observe('after save', (ctx, next) => {
-    app.models.AccountDouble.upsertWithWhere({
+    AccountDouble.upsertWithWhere({
       accountId: ctx.instance.id
     }, {
       accountId: ctx.instance.id,
@@ -78,7 +79,6 @@ module.exports = function(Account) {
     LIMIT ${amount};
     `;
 
-    const mariaDs = app.dataSources.mariaDs;
     mariaDs.connector.execute(sqlQuery, null, (err, postDoubleList) => {
       if (err) console.error(err);
 
@@ -86,7 +86,7 @@ module.exports = function(Account) {
         postDouble => postDouble.postId
       );
 
-      app.models.Post.find({
+      Post.find({
         where: {
           id: {inq: postIdList}
         },

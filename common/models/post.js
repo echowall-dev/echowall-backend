@@ -1,13 +1,13 @@
 'use strict';
 
 const app = require('../../server/server');
-// let appPros = require('../app-properties');
-// let postDomain = appPros.hostDomain + '/post';
 
 module.exports = function(Post) {
+  const { PostDouble } = app.models;
+
   // Create or update PostDouble instance after a post is created
   Post.observe('after save', (ctx, next) => {
-    app.models.PostDouble.upsertWithWhere({
+    PostDouble.upsertWithWhere({
       postId: ctx.instance.id
     }, {
       postId: ctx.instance.id,

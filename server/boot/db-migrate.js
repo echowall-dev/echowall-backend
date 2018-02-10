@@ -1,7 +1,5 @@
 'use strict';
 
-const app = require('../server');
-
 module.exports = function(app, cb) {
   /*
    * The `app` object provides access to a variety of LoopBack resources such as
@@ -10,7 +8,7 @@ module.exports = function(app, cb) {
    * http://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects
    * for more info.
    */
-  const mariaDs = app.dataSources.mariaDs;
+  const { mariaDs } = app.dataSources;
 
   mariaDs.autoupdate('AccountDouble', (err) => {
     if (err) throw err;

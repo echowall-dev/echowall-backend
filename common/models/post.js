@@ -27,7 +27,7 @@ module.exports = function(Post) {
       status: ctx.instance.status,
       createdAt: ctx.instance.createdAt,
       updatedAt: ctx.instance.updatedAt
-    }, (err, model) => {
+    }, (err, newPostDouble) => {
       if (err) {
         return next(err);
       }

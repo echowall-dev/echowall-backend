@@ -18,7 +18,7 @@ module.exports = function(Account) {
       status: ctx.instance.status,
       createdAt: ctx.instance.createdAt,
       updatedAt: ctx.instance.updatedAt
-    }, (err, model) => {
+    }, (err, newAccountDouble) => {
       if (err) {
         return next(err);
       }
@@ -82,9 +82,7 @@ module.exports = function(Account) {
     mariaDs.connector.execute(sqlQuery, null, (err, postDoubleList) => {
       if (err) console.error(err);
 
-      let postIdList = postDoubleList.map(
-        postDouble => postDouble.postId
-      );
+      let postIdList = postDoubleList.map(postDouble => postDouble.postId);
 
       Post.find({
         where: {

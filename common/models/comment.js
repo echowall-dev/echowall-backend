@@ -27,8 +27,24 @@ module.exports = function(Comment) {
   Comment.observe('after save', (ctx, next) => {
     if (ctx.isNewInstance) {
       const { Account, Post } = app.models;
-      Account.upsertWithWhere();
-      Post.upsertWithWhere();
+
+      Account.findById(ctx.instance.creatorId, (err, oldAccount) => {
+        if (err) next(err);
+        oldAccount.updateAttributes({
+          commentCount: oldAccount.commentCount + 1
+        }, (err, newAccount) => {
+          if (err) next(err);
+        });
+      });
+
+      Post.findById(ctx.instance.postId, (err, oldPost) => {
+        if (err) next(err);
+        oldPost.updateAttributes({
+          commentCount: oldPost.commentCount + 1
+        }, (err, newPost) => {
+          if (err) next(err);
+        });
+      });
     }
   });
 };

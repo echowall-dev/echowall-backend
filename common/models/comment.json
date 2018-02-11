@@ -22,7 +22,7 @@
     "post": {
       "type": "belongsTo",
       "model": "Post",
-      "foreignKey": ""
+      "foreignKey": "postId"
     },
     "creator": {
       "type": "belongsTo",

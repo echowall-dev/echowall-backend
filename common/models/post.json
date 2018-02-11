@@ -76,7 +76,7 @@
     "comments": {
       "type": "hasMany",
       "model": "Comment",
-      "foreignKey": ""
+      "foreignKey": "postId"
     }
   },
   "acls": [],

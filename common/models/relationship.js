@@ -58,5 +58,6 @@ module.exports = function(Relationship) {
     }
   });
 
+  // TODO: handle block and delete
   // Relationship.observe('after delete', (ctx, next) => {});
 };

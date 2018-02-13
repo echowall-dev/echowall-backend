@@ -92,6 +92,11 @@
   },
   "validations": [],
   "relations": {
+    "propic": {
+      "type": "embedsOne",
+      "model": "Image",
+      "property": "propic"
+    },
     "avatar": {
       "type": "embedsOne",
       "model": "Image",

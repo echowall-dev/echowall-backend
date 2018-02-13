@@ -24,7 +24,8 @@ module.exports = function(Relationship) {
   // if the target user is also following this user,
   // they become friends automatically
   Relationship.observe('after save', (ctx, next) => {
-    if (ctx.isNewInstance) {
+    if (ctx.isNewInstance && ctx.instance.status === 'follow') {
+      // Find if the target user is also following this user
       Relationship.findOne({
         where: {
           subjectUserId: ctx.instance.objectUserId,
@@ -37,8 +38,9 @@ module.exports = function(Relationship) {
           return next(err);
         }
 
-        // The target user is also following this user
+        // The target user is indeed also following this user
         if (foundRelationship) {
+          // Change the status of these two users to 'friend'
           Relationship.updateAll({
             // This argument itself is a where filter so no 'where:' is needed
             // 'inq:' is faster than 'or:' on fields which are indexes
@@ -56,20 +58,21 @@ module.exports = function(Relationship) {
 
         next();
       });
-    } else {
-      if (ctx.instance.status === 'block') {
-        Relationship.upsertWithWhere({
-          subjectUserId: ctx.instance.objectUserId,
-          objectUserId: ctx.instance.subjectUserId
-        }, {
-          subjectUserId: ctx.instance.objectUserId,
-          objectUserId: ctx.instance.subjectUserId,
-          status: 'blocked'
-        }, (err, newRelationship) => {
-          if (err) return next(err);
-          next();
-        });
-      }
+    }
+
+    // If this user blocks another user, change the target user to 'blocked'
+    if (ctx.instance.access === 'block') {
+      Relationship.upsertWithWhere({
+        subjectUserId: ctx.instance.objectUserId,
+        objectUserId: ctx.instance.subjectUserId
+      }, {
+        subjectUserId: ctx.instance.objectUserId,
+        objectUserId: ctx.instance.subjectUserId,
+        access: 'blocked'
+      }, (err, newRelationship) => {
+        if (err) return next(err);
+        next();
+      });
     }
   });
 

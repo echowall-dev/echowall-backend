@@ -69,8 +69,8 @@ module.exports = function(Account) {
     	SELECT P.postId, P.createdAt
     	FROM PostDouble AS P INNER JOIN Relationship AS R
     	ON R.objectUserId = P.creatorId AND R.subjectUserId = "${this.id}"
-    	AND (P.privacy = "friend" AND R.status = "friend"
-    	OR P.privacy = "public" AND R.status != "block")
+    	AND (P.privacy = "friend" AND R.status = "friend" AND R.access = "free"
+    	OR P.privacy = "public" AND R.access = "free")
     	AND P.createdAt < "${lastFetchTime}"
     	AND P.status = "active"
     	LIMIT ${amount}

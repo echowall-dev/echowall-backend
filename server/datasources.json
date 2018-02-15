@@ -9,7 +9,7 @@
     "url": "",
     "database": "echowall-dev",
     "password": "",
-    "name": "mariaDs",
+    "name": "mysql",
     "user": "root",
     "connector": "mysql"
   },
@@ -19,7 +19,7 @@
     "url": "",
     "database": "echowall-dev",
     "password": "",
-    "name": "mongoDs",
+    "name": "mongodb",
     "user": "",
     "connector": "mongodb"
   },

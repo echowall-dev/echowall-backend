@@ -22,24 +22,19 @@
       "required": true
     },
     "middleName": {
-      "type": "string",
-      "default": null
+      "type": "string"
     },
     "gender": {
-      "type": "string",
-      "default": null
+      "type": "string"
     },
     "birthdate": {
-      "type": "date",
-      "default": null
+      "type": "date"
     },
     "description": {
-      "type": "string",
-      "default": null
+      "type": "string"
     },
     "phoneNumber": {
-      "type": "string",
-      "default": null
+      "type": "string"
     },
     "role": {
       "type": "string",

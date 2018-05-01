@@ -1,15 +1,7 @@
-*.csv
-*.dat
-*.iml
-*.out
-*.sublime-*
-*.swo
-*.swp
-*.xml
-.idea
+.idea/
 .project
 .strong-pm
-package-log.json
+package-lock.json
 yarn.lock
 
 # LoopBack config files

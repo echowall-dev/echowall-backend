@@ -14,8 +14,7 @@
       "defaultFn": "uuidv4"
     },
     "caption": {
-      "type": "string",
-      "default": null
+      "type": "string"
     },
     "privacy": {
       "type": "string",

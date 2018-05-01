@@ -12,24 +12,24 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "compression": "^1.7.1",
+    "compression": "^1.7.2",
     "cors": "^2.8.4",
-    "helmet": "^3.10.0",
-    "loopback": "^3.18.1",
-    "loopback-boot": "^2.27.0",
-    "loopback-component-explorer": "^5.2.0",
-    "loopback-component-passport": "^3.4.1",
-    "loopback-connector-mongodb": "^3.4.1",
+    "helmet": "^3.12.0",
+    "loopback": "^3.19.0",
+    "loopback-boot": "^2.27.1",
+    "loopback-component-explorer": "^5.4.0",
+    "loopback-component-passport": "^3.8.0",
+    "loopback-connector-mongodb": "^3.4.3",
     "loopback-connector-mysql": "^5.2.0",
     "loopback-ds-timestamp-mixin": "^3.4.1",
-    "serve-favicon": "^2.4.5",
-    "strong-error-handler": "^2.3.1"
+    "serve-favicon": "^2.5.0",
+    "strong-error-handler": "^2.3.2"
   },
   "devDependencies": {
-    "eslint": "^4.17.0",
+    "eslint": "^4.19.1",
     "eslint-config-loopback": "^10.0.0",
     "npm-run-all": "^4.1.2",
-    "nsp": "^3.1.0"
+    "nsp": "^3.2.1"
   },
   "repository": {
     "type": "",

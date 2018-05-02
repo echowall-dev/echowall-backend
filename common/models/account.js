@@ -96,4 +96,37 @@ module.exports = function(Account) {
       });
     });
   };
+
+  /**
+   * Follow another user
+   * @param {string} userId The ID of the target user
+   * @param {Function(Error, string)} callback
+   */
+  Account.prototype.follow = function(userId, callback) {
+    var userId, success;
+    // TODO
+    callback(null, userId, success);
+  };
+
+  /**
+   * Unfollow another user
+   * @param {string} userId The ID of the target user
+   * @param {Function(Error, string, boolean)} callback
+   */
+  Account.prototype.unfollow = function(userId, callback) {
+    var userId, success;
+    // TODO
+    callback(null, userId, success);
+  };
+
+  /**
+   * Block another user
+   * @param {string} userId The ID of the target user
+   * @param {Function(Error, string, boolean)} callback
+   */
+  Account.prototype.block = function(userId, callback) {
+    var userId, success;
+    // TODO
+    callback(null, userId, success);
+  };
 };

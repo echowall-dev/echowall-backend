@@ -18,5 +18,8 @@
       "limit": "100kb"
     },
     "cors": false
-  }
+  },
+  "hostDomain": "www.echowall.com",
+  "apiDomain": "https://api.echowall.com",
+  "storageDomain": ""
 }

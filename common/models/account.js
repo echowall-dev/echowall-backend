@@ -103,7 +103,7 @@ module.exports = function(Account) {
    * @param {Function(Error, string)} callback
    */
   Account.prototype.follow = function(userId, callback) {
-    var userId, success;
+    let success;
     // TODO
     callback(null, userId, success);
   };
@@ -114,7 +114,7 @@ module.exports = function(Account) {
    * @param {Function(Error, string, boolean)} callback
    */
   Account.prototype.unfollow = function(userId, callback) {
-    var userId, success;
+    let success;
     // TODO
     callback(null, userId, success);
   };
@@ -125,7 +125,7 @@ module.exports = function(Account) {
    * @param {Function(Error, string, boolean)} callback
    */
   Account.prototype.block = function(userId, callback) {
-    var userId, success;
+    let success;
     // TODO
     callback(null, userId, success);
   };

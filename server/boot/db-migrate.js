@@ -61,7 +61,6 @@ module.exports = function(app, cb) {
     const sqlQuery = `
     ALTER TABLE Relationship
     MODIFY COLUMN status VARCHAR(255),
-    MODIFY COLUMN access VARCHAR(255),
     MODIFY COLUMN subjectUserId VARCHAR(255),
     MODIFY COLUMN objectUserId VARCHAR(255),
     ADD CONSTRAINT relationshipPair UNIQUE (subjectUserId, objectUserId);

@@ -105,21 +105,6 @@ module.exports = function(Relationship) {
         next();
       });
     }
-
-    // If this user blocks another user, change the target user to 'blocked'
-    if (ctx.instance.access === 'block') {
-      Relationship.upsertWithWhere({
-        subjectUserId: ctx.instance.objectUserId,
-        objectUserId: ctx.instance.subjectUserId
-      }, {
-        subjectUserId: ctx.instance.objectUserId,
-        objectUserId: ctx.instance.subjectUserId,
-        access: 'blocked'
-      }, (err, newRelationship) => {
-        if (err) return next(err);
-        next();
-      });
-    }
   });
 
   // TODO: update followeeCount, followerCount and friendCount for block status

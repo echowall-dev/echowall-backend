@@ -99,10 +99,10 @@ module.exports = function(Account) {
 
   /**
    * Follow another user
-   * @param {string} userId The ID of the target user
-   * @param {Function(Error, string)} callback
+   * @param {Function(Error, string, boolean)} callback
    */
-  Account.prototype.follow = function(userId, callback) {
+  Account.prototype.follow = function(callback) {
+    let userId = this.id;
     let success;
     // TODO
     callback(null, userId, success);
@@ -110,10 +110,10 @@ module.exports = function(Account) {
 
   /**
    * Unfollow another user
-   * @param {string} userId The ID of the target user
    * @param {Function(Error, string, boolean)} callback
    */
-  Account.prototype.unfollow = function(userId, callback) {
+  Account.prototype.unfollow = function(callback) {
+    let userId = this.id;
     let success;
     // TODO
     callback(null, userId, success);
@@ -121,10 +121,10 @@ module.exports = function(Account) {
 
   /**
    * Block another user
-   * @param {string} userId The ID of the target user
    * @param {Function(Error, string, boolean)} callback
    */
-  Account.prototype.block = function(userId, callback) {
+  Account.prototype.block = function(callback) {
+    let userId = this.id;
     let success;
     // TODO
     callback(null, userId, success);

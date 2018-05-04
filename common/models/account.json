@@ -175,14 +175,7 @@
       ]
     },
     "prototype.follow": {
-      "accepts": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "required": true,
-          "description": "The ID of the target user"
-        }
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "userId",
@@ -206,14 +199,7 @@
       ]
     },
     "prototype.unfollow": {
-      "accepts": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "required": true,
-          "description": "The ID of the target user"
-        }
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "userId",
@@ -237,14 +223,7 @@
       ]
     },
     "prototype.block": {
-      "accepts": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "required": true,
-          "description": "The ID of the target user"
-        }
-      ],
+      "accepts": [],
       "returns": [
         {
           "arg": "userId",

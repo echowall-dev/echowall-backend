@@ -174,8 +174,21 @@
         }
       ]
     },
-    "prototype.follow": {
-      "accepts": [],
+    "prototype.relationship": {
+      "accepts": [
+        {
+          "arg": "userId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of the target user"
+        },
+        {
+          "arg": "action",
+          "type": "string",
+          "required": true,
+          "description": "Can be follow, unfollow or block"
+        }
+      ],
       "returns": [
         {
           "arg": "userId",
@@ -187,61 +200,13 @@
           "arg": "success",
           "type": "boolean",
           "root": false,
-          "description": "The status of the follow request"
+          "description": "The status of the action request"
         }
       ],
-      "description": "Follow another user",
+      "description": "Perform a relationship action to another user",
       "http": [
         {
-          "path": "/follow",
-          "verb": "post"
-        }
-      ]
-    },
-    "prototype.unfollow": {
-      "accepts": [],
-      "returns": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "root": false,
-          "description": "The ID of the target user"
-        },
-        {
-          "arg": "success",
-          "type": "boolean",
-          "root": false,
-          "description": "The status of the unfollow request"
-        }
-      ],
-      "description": "Unfollow another user",
-      "http": [
-        {
-          "path": "/unfollow",
-          "verb": "post"
-        }
-      ]
-    },
-    "prototype.block": {
-      "accepts": [],
-      "returns": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "root": false,
-          "description": "The ID of the target user"
-        },
-        {
-          "arg": "success",
-          "type": "boolean",
-          "root": false,
-          "description": "The status of the block request"
-        }
-      ],
-      "description": "Block another user",
-      "http": [
-        {
-          "path": "/block",
+          "path": "/relationship",
           "verb": "post"
         }
       ]

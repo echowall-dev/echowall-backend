@@ -98,34 +98,13 @@ module.exports = function(Account) {
   };
 
   /**
-   * Follow another user
+   * Perform a relationship action to another user
+   * @param {string} userId The ID of the target user
+   * @param {string} action Can be follow, unfollow or block
    * @param {Function(Error, string, boolean)} callback
    */
-  Account.prototype.follow = function(callback) {
-    let userId = this.id;
-    let success;
-    // TODO
-    callback(null, userId, success);
-  };
-
-  /**
-   * Unfollow another user
-   * @param {Function(Error, string, boolean)} callback
-   */
-  Account.prototype.unfollow = function(callback) {
-    let userId = this.id;
-    let success;
-    // TODO
-    callback(null, userId, success);
-  };
-
-  /**
-   * Block another user
-   * @param {Function(Error, string, boolean)} callback
-   */
-  Account.prototype.block = function(callback) {
-    let userId = this.id;
-    let success;
+  Account.prototype.relationship = function(userId, action, callback) {
+    let success = false;
     // TODO
     callback(null, userId, success);
   };

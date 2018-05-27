@@ -12,6 +12,10 @@
     "status": {
       "type": "string",
       "default": "follow"
+    },
+    "access": {
+      "type": "string",
+      "default": "free"
     }
   },
   "validations": [],

@@ -27,25 +27,6 @@ module.exports = function(Account) {
     });
   });
 
-  // Users cannot follow themselves
-  // Need to do this checking in remote hooks instead of operation hooks,
-  // otherwise there will be error "Callback was already called"
-  Account.beforeRemote('**', (ctx, unused, next) => {
-    // console.log(ctx.req.params);
-    // console.log(ctx.req.body);
-
-    if (ctx.req.params) {
-      if (ctx.req.params.id === ctx.req.params.fk) {
-        let err = new Error('Users cannot follow themselves');
-        err.statusCode = 422;
-        // console.error(err);
-        // throw err;
-        return next(err);
-      }
-    }
-    next();
-  });
-
   /**
    * Fetch available posts
    * @param {number} amount The amount of posts to get
@@ -100,12 +81,46 @@ module.exports = function(Account) {
   /**
    * Perform a relationship action to another user
    * @param {string} userId The ID of the target user
-   * @param {string} action Can be follow, unfollow or block
+   * @param {string} action Can be follow, unfollow, block or unblock
    * @param {Function(Error, string, boolean)} callback
    */
   Account.prototype.relationship = function(userId, action, callback) {
-    let success = false;
-    // TODO
-    callback(null, userId, success);
+    if (userId === this.id) {
+      let err = new Error('Target user and current user are the same');
+      err.statusCode = 422;
+      callback(err, userId, false);
+    } else {
+      const { Relationship } = app.models;
+
+      switch (action) {
+        case 'follow':
+          Relationship.create({
+            subjectUser: this.id,
+            objectUser: userId,
+            status: 'follow'
+          }, (err, relationship) => {
+            if (err) {
+              console.error(err);
+              callback(err, userId, false);
+            } else {
+              callback(null, userId, true);
+            }
+          });
+          break;
+        case 'unfollow':
+          callback(null, userId, true);
+          break;
+        case 'block':
+          callback(null, userId, true);
+          break;
+        case 'unblock':
+          callback(null, userId, true);
+          break;
+        default:
+          let err = new Error('Invalid action');
+          err.statusCode = 422;
+          callback(err, userId, false);
+      }
+    }
   };
 };

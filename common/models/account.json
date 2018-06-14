@@ -173,43 +173,6 @@
           "verb": "get"
         }
       ]
-    },
-    "prototype.relationship": {
-      "accepts": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "required": true,
-          "description": "The ID of the target user"
-        },
-        {
-          "arg": "action",
-          "type": "string",
-          "required": true,
-          "description": "Can be follow, unfollow or block"
-        }
-      ],
-      "returns": [
-        {
-          "arg": "userId",
-          "type": "string",
-          "root": false,
-          "description": "The ID of the target user"
-        },
-        {
-          "arg": "success",
-          "type": "boolean",
-          "root": false,
-          "description": "The status of the action request"
-        }
-      ],
-      "description": "Perform a relationship action to another user",
-      "http": [
-        {
-          "path": "/relationship",
-          "verb": "post"
-        }
-      ]
     }
   }
 }

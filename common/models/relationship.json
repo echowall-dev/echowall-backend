@@ -32,5 +32,130 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "follow": {
+      "accepts": [
+        {
+          "arg": "subjectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of subject user"
+        },
+        {
+          "arg": "objectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of object user"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "success",
+          "type": "boolean",
+          "root": false,
+          "description": "The status of the follow request"
+        }
+      ],
+      "description": "To let a user follow another user",
+      "http": [
+        {
+          "path": "/follow",
+          "verb": "post"
+        }
+      ]
+    },
+    "unfollow": {
+      "accepts": [
+        {
+          "arg": "subjectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of subject user"
+        },
+        {
+          "arg": "objectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of object user"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "success",
+          "type": "boolean",
+          "root": false,
+          "description": "The status of the unfollow request"
+        }
+      ],
+      "description": "To let a user unfollow another user",
+      "http": [
+        {
+          "path": "/unfollow",
+          "verb": "post"
+        }
+      ]
+    },
+    "block": {
+      "accepts": [
+        {
+          "arg": "subjectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of subject user"
+        },
+        {
+          "arg": "objectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of object user"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "success",
+          "type": "boolean",
+          "root": false,
+          "description": "The status of the block request"
+        }
+      ],
+      "description": "To let a user block another user",
+      "http": [
+        {
+          "path": "/block",
+          "verb": "post"
+        }
+      ]
+    },
+    "unblock": {
+      "accepts": [
+        {
+          "arg": "subjectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of subject user"
+        },
+        {
+          "arg": "objectUserId",
+          "type": "string",
+          "required": true,
+          "description": "The ID of object user"
+        }
+      ],
+      "returns": [
+        {
+          "arg": "success",
+          "type": "boolean",
+          "root": false,
+          "description": "The status of the unblock request"
+        }
+      ],
+      "description": "To let a user unblock another user",
+      "http": [
+        {
+          "path": "/unblock",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
